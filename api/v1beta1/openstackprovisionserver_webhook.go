@@ -30,7 +30,6 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
-	"sigs.k8s.io/controller-runtime/pkg/webhook"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 )
 
@@ -45,7 +44,6 @@ func SetupOpenStackProvisionServerDefaults(defaults OpenStackProvisionServerDefa
 	openstackprovisionserverlog.Info("OpenStackProvisionServer defaults initialized", "defaults", defaults)
 }
 
-var _ webhook.Validator = &OpenStackProvisionServer{}
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *OpenStackProvisionServer) ValidateCreate() (admission.Warnings, error) {
@@ -95,7 +93,6 @@ func (r *OpenStackProvisionServer) ValidateDelete() (admission.Warnings, error) 
 	return nil, nil
 }
 
-var _ webhook.Defaulter = &OpenStackProvisionServer{}
 
 // Default implements webhook.Defaulter so a webhook will be registered for the type
 func (r *OpenStackProvisionServer) Default() {
